@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Absensi PRO QR + Selfie</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+<h2 class="judul">📚 ABSENSI PRO</h2>
+<div class="waktu-top"><span id="tgl"></span> | <span id="jam"></span> WIB</div>
+
+<div class="tab">
+<button id="btnSiswa" class="active" onclick="mode('siswa')">👨‍🎓 SISWA</button>
+<button id="btnGuru" onclick="mode('guru')">👨‍🏫 GURU</button>
+</div>
+
+<div id="siswa" class="card">
+<input id="nama" placeholder="Nama Lengkap">
+<select id="kelas"><option value="">Pilih Kelas</option><option>X TKJ 1</option><option>XI TKJ 1</option><option>XII TKJ 1</option></select>
+<div id="reader"></div>
+<button class="btn" onclick="startScan()">📷 Scan QR Guru Dulu</button>
+<video id="cam" autoplay playsinline></video>
+<canvas id="canvas"></canvas>
+<img id="preview">
+<button class="btn" id="btnCam" onclick="bukaCam()">🤳 Buka Kamera Selfie</button>
+<button class="btn kirim" onclick="kirim()">🚀 KIRIM ABSEN + SELFIE</button>
+<div id="list"></div>
+</div>
+
+<div id="guru" class="card" style="display:none">
+<h3>Buat QR Hari Ini</h3>
+<p class="desc">QR ini berubah tiap hari jam 00:00 WIB otomatis</p>
+<div id="qrcode"></div>
+<p id="qrText"></p>
+<button class="btn" onclick="buatQR()">🔄 Generate QR Hari Ini</button>
+<button class="btn gelap" onclick="exportCSV()">📥 Export Excel</button>
+<button class="btn merah" onclick="hapus()">🗑️ Hapus Data</button>
+<div id="listGuru"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
